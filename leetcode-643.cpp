@@ -6,7 +6,7 @@
 #include <cassert>
 using namespace std;
 
-int maxvalue(const vector<int>& nums, int k) {
+double maxvalue(const vector<int>& nums, int k) {
     int sum=0; int max=0;
     for (int i=0; i<k; i++){
         sum+=nums[i];
@@ -16,10 +16,9 @@ int maxvalue(const vector<int>& nums, int k) {
         sum+=nums[j]-nums[j-k];
         if (max<sum) max=sum;
     }
-    return max;
+    return double(max/k);
 }
 int main(){
-    assert(maxvalue({1,9,2,4,3,7},3)==15);
+    assert(maxvalue({1,9,2,4,3,7},3)==15.0);
     cout<<"ok";
-
 }
