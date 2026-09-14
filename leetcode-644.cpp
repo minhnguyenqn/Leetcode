@@ -14,3 +14,27 @@ The maximum average among all these subarrays is 12.75.*/
 #include <vector>
 #include <cassert>
 using namespace std;
+double maxavaveragevalue(const vector <int> nums, int k){
+    int max=0;
+    double max1=0;
+    double max2=0;
+    for (int i=k; i<nums.size();i++){
+        int sum=0;
+        for (int j=0; j<i; j++){
+        sum+=nums[j];
+        }
+        max=sum;
+        for (int j=i; j<nums.size();j++){
+        sum+=nums[j]-nums[j-i];
+        if (max<sum) max=sum;
+        }
+        max1=double(max)/double(i);
+        if (max2<max1) max2=max1;
+
+}
+    return max2;
+}
+int main(){
+    cout<<maxavaveragevalue({1, 12, -5, -6, 50, 3},4);
+    cout<<"ok";
+}
