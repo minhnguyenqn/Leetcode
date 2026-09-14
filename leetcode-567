@@ -1,0 +1,25 @@
+/* Given two strings s1 and s2, return true if s2 contains a permutation of s1, or false otherwise.
+In other words, return true if one of s1's permutations is the substring of s2.*/
+#include <iostream>
+#include <string>
+#include <algorithm>
+#include <climits>
+using namespace std;
+bool checkpermutation(string str1, string str2){
+    sort(str1.begin(),str1.end());
+    sort(str2.begin(),str2.end());
+    return str1 == str2;
+
+}
+bool checkInclusion(string s1, string s2) {
+    int n=s1.length();
+    string res="";
+    for (int right=0; right<s2.length(); right++){
+        res+=s2[right];
+        if (res.length()==n){
+            if (checkpermutation(s1,res)) return true;
+            res.erase(0,1);
+        }
+    }
+    return false;
+}
